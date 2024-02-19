@@ -9,7 +9,7 @@ TASK_ID = 1
 def create_task():
     global TASK_ID
     data = request.get_json()
-    new_task = Task(id=TASK_ID,title=data.get("title") )
+    new_task = Task(id=TASK_ID,title=data.get("title"), done=data.get("done") )
     TASK_ID+=1
     tasks.append(new_task)
     print(tasks)
@@ -40,6 +40,10 @@ def update_task(id):
             task_update = t
     if task_update is None:
         return jsonify({"message": "Tarefa não encontrada"}, 404)
+    data = request.get_json()
+    task_update.title = data['title']
+    task_update.done = data['done']
+    return jsonify({"message": "Tarefa atualizada com sucesso!"})
 
 if __name__ == "__main__":
     app.run(debug=True)

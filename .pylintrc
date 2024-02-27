@@ -5,9 +5,10 @@ disable=
       C0116, # missing-function-docstring
       W0703, # Catching too general exception Exception
       R0903, # too-few-public-methods
-	    W0719, # broad-exception-raised
+	W0719, # broad-exception-raised
       W0603, #global-statement
       W0622, #redefined-builtin
+      W3101, #missing-timeout
   
     
 
